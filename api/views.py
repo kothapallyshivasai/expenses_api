@@ -29,7 +29,6 @@ def register(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
-        
         refresh = RefreshToken.for_user(user)
         tokens = {
             'refresh': str(refresh),
